@@ -1310,4 +1310,14 @@ static inline int32_t bgfsys_power_off(void)
 	return ret;
 }
 
+static inline void fwp_get_patch_names(void)
+{
+	snprintf(g_fwp_names[0][0], FW_NAME_LEN, "%s", _BIN_NAME_MCU);
+	snprintf(g_fwp_names[1][0], FW_NAME_LEN, "%s", _BIN_NAME_BT);
+
+#if (CUSTOMER_FW_UPDATE == 1)
+	snprintf(g_fwp_names[0][1], FW_NAME_LEN, "%s", BIN_NAME_MCU_U);
+	snprintf(g_fwp_names[1][1], FW_NAME_LEN, "%s", BIN_NAME_BT_U);
+#endif
+}
 #endif
